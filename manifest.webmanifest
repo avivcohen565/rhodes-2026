@@ -1,0 +1,19 @@
+{
+  "name": "רודוס לפי שעות היום",
+  "short_name": "רודוס",
+  "description": "מדריך המקומות ברודוס לפי בוקר / צהריים / ערב",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "lang": "he",
+  "dir": "rtl",
+  "background_color": "#EFF2F0",
+  "theme_color": "#1B6A5E",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
