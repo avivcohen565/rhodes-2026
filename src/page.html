@@ -1,19 +1,8 @@
-<!doctype html>
-<html lang="he" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>רודוס לפי שעות היום</title>
-<meta name="description" content="כל המקומות ברודוס מקישורי הטיקטוק של הקבוצה, לפי בוקר / צהריים / ערב, עם מחירים ומרחקים מהמלון.">
-<meta name="theme-color" content="#EFF2F0" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0D1615" media="(prefers-color-scheme: dark)">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="רודוס">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%9B%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@400;500;700&display=swap">
+
 <style>
 :root{
   --ground:#EFF2F0;
@@ -278,51 +267,7 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-of
   .fact:first-child{border-top:0}
 }
 </style>
-<style>
-/* ---------- mobile shell ---------- */
-html{scroll-behavior:smooth}
-body{-webkit-tap-highlight-color:transparent;overflow-x:hidden}
-.qnav{
-  position:sticky;top:0;z-index:50;
-  display:flex;gap:6px;overflow-x:auto;
-  margin:0 -20px 34px;padding:10px 20px;
-  background:color-mix(in srgb, var(--ground) 88%, transparent);
-  backdrop-filter:saturate(150%) blur(12px);
-  -webkit-backdrop-filter:saturate(150%) blur(12px);
-  border-bottom:1px solid var(--line);
-  scrollbar-width:none;
-}
-.qnav::-webkit-scrollbar{display:none}
-.qnav a{
-  flex:none;
-  font-family:"Heebo",sans-serif;font-size:13px;font-weight:500;
-  color:var(--ink-2);text-decoration:none;
-  padding:7px 13px;border-radius:999px;
-  border:1px solid var(--line);
-  background:var(--surface);
-  white-space:nowrap;
-}
-.qnav a:hover,.qnav a:focus-visible{color:var(--accent);border-color:var(--accent)}
-section[id]{scroll-margin-top:64px}
-.mapwrap{-webkit-overflow-scrolling:touch}
-@media (max-width:640px){
-  body{font-size:16px}
-  .wrap{padding:0 16px 72px}
-  header{padding:34px 0 22px;margin-bottom:26px}
-  .qnav{margin:0 -16px 26px;padding:10px 16px}
-  .card{padding:17px 17px 15px}
-  .notes{padding:18px 18px}
-  .mapwrap::after{
-    content:"↔ אפשר לגרור את המפה הצידה";
-    display:block;padding:8px 12px;font-family:"Heebo",sans-serif;
-    font-size:12px;color:var(--muted);background:var(--surface-2);
-    border-top:1px solid var(--line);position:sticky;left:0;
-  }
-}
-@media print{.qnav{display:none}body{background:#fff;color:#000}}
-</style>
-</head>
-<body>
+
 <div class="wrap">
 
 <header>
@@ -336,20 +281,9 @@ section[id]{scroll-margin-top:64px}
     <div class="fact"><dt>מקומות</dt><dd>25 · הכל מהקבוצה</dd></div>
   </dl>
 </header>
-<nav class="qnav" aria-label="ניווט מהיר">
-  <a href="#bookings">הזמנות</a>
-  <a href="#map">מפה</a>
-  <a href="#morning">בוקר</a>
-  <a href="#noon">צהריים</a>
-  <a href="#evening">ערב</a>
-  <a href="#plan">5 ימים</a>
-  <a href="#index">כל המקומות</a>
-  <a href="#notes">הערות</a>
-</nav>
-
 
 <!-- ============ הזמנות ============ -->
-<section style="--band:var(--accent);--band-wash:var(--accent-wash)" id="bookings">
+<section style="--band:var(--accent);--band-wash:var(--accent-wash)">
   <div class="sec-head">
     <h2>מה כבר סגור</h2>
     <span class="when">הזמנות ותשלומים</span>
@@ -413,7 +347,7 @@ section[id]{scroll-margin-top:64px}
 </section>
 
 <!-- ============ מפה ============ -->
-<section id="map">
+<section>
   <div class="sec-head">
     <h2>הכל על ציר אחד</h2>
     <span class="when">המלון באמצע · צפונה לעיר, דרומה ללינדוס</span>
@@ -532,7 +466,7 @@ section[id]{scroll-margin-top:64px}
 </section>
 
 <!-- ============ בוקר ============ -->
-<section style="--band:var(--morning);--band-wash:var(--morning-wash)" id="morning">
+<section style="--band:var(--morning);--band-wash:var(--morning-wash)">
   <div class="sec-head">
     <h2>בוקר</h2>
     <span class="when">08:00 – 12:00 · לפני שהחופים מתמלאים</span>
@@ -600,7 +534,7 @@ section[id]{scroll-margin-top:64px}
 </section>
 
 <!-- ============ צהריים ============ -->
-<section style="--band:var(--noon);--band-wash:var(--noon-wash)" id="noon">
+<section style="--band:var(--noon);--band-wash:var(--noon-wash)">
   <div class="sec-head">
     <h2>צהריים</h2>
     <span class="when">12:00 – 18:00 · אוכל על המים, סירה, ועיר עתיקה</span>
@@ -657,7 +591,7 @@ section[id]{scroll-margin-top:64px}
 </section>
 
 <!-- ============ ערב ============ -->
-<section style="--band:var(--evening);--band-wash:var(--evening-wash)" id="evening">
+<section style="--band:var(--evening);--band-wash:var(--evening-wash)">
   <div class="sec-head">
     <h2>ערב</h2>
     <span class="when">18:00 ואילך · תשע אופציות, מהקרוב לרחוק</span>
@@ -780,7 +714,7 @@ section[id]{scroll-margin-top:64px}
 </section>
 
 <!-- ============ הצעה ליומן ============ -->
-<section id="plan">
+<section>
   <div class="sec-head">
     <h2>איך זה מתחלק על 5 הימים</h2>
     <span class="when">31.8 – 4.9</span>
@@ -828,7 +762,7 @@ section[id]{scroll-margin-top:64px}
 </section>
 
 <!-- ============ אינדקס מלא ============ -->
-<section id="index">
+<section>
   <div class="sec-head">
     <h2>כל המקומות שנאספו</h2>
     <span class="when">מהקרוב למלון ועד הרחוק · 25 פריטים</span>
@@ -871,7 +805,7 @@ section[id]{scroll-margin-top:64px}
 </section>
 
 <!-- ============ הערות ============ -->
-<section class="notes" id="notes">
+<section class="notes">
   <h2>מה כדאי לסגור עכשיו, ומה כדאי לדעת</h2>
   <ul>
     <li><strong>Tambakio לערב — להזמין היום.</strong> הזמנות לערב נפתחות 14 יום מראש, כלומר החלון לכל התאריכים שלכם כבר פתוח. בצהריים אין הזמנות בכלל, רק כניסה חופשית.</li>
@@ -889,6 +823,3 @@ section[id]{scroll-margin-top:64px}
 </footer>
 
 </div>
-
-</body>
-</html>
