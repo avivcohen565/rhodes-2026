@@ -226,10 +226,11 @@ h2{
   border-radius:var(--radius);
   background:var(--sea);
 }
-.map{display:block;width:100%;min-width:660px;height:auto;direction:ltr}
-.mlabel text{direction:ltr;unicode-bidi:plaintext}
-.mlabel .n{font-family:"Heebo",sans-serif;font-size:13px;font-weight:700;fill:var(--ink)}
-.mlabel .t{font-family:"Heebo",sans-serif;font-size:11.5px;font-weight:400;fill:var(--muted)}
+.map{display:block;width:100%;min-width:700px;height:auto;direction:ltr}
+.mlabel text,.map .ring-lbl{direction:ltr;unicode-bidi:plaintext}
+.mlabel .n{font-family:"Heebo",sans-serif;font-size:14.5px;font-weight:700;fill:var(--ink)}
+.mlabel .t{font-family:"Heebo",sans-serif;font-size:12.5px;font-weight:400;fill:var(--muted)}
+.map .ring-lbl{font-family:"Heebo",sans-serif;font-size:12px;font-weight:500;fill:var(--accent);text-anchor:middle;opacity:.85}
 .mlabel .e{text-anchor:end}
 .mlabel .hl{fill:var(--accent)}
 .mlabel a{cursor:pointer}
@@ -242,6 +243,13 @@ h2{
 .legend i{width:11px;height:11px;border-radius:50%;display:inline-block;flex:none}
 .legend i.ring{border:2.5px solid var(--accent);background:transparent}
 .legend i.dash{width:24px;height:0;border-radius:0;border-top:2.5px dashed var(--road)}
+.legend i.dashring{width:13px;height:13px;border:1.5px dashed var(--accent);background:transparent}
+.legend i.dia{background:var(--muted);border-radius:2px;transform:rotate(45deg)}
+.legend i.local{
+  background:var(--muted);border-radius:50%;
+  box-shadow:0 0 0 2px var(--surface-2), 0 0 0 4px var(--muted);
+  width:7px;height:7px;margin:0 3px;
+}
 
 .scroller{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
 table{border-collapse:collapse;width:100%;min-width:680px;font-size:15px}
@@ -328,7 +336,7 @@ section[id]{scroll-margin-top:64px}
 <header>
   <p class="eyebrow">מתוך הקבוצה "רודוס 26" · 11 קישורי טיקטוק</p>
   <h1>רודוס לפי שעות היום</h1>
-  <p class="lede">כל המקומות ששוהם שלחה בקבוצה, מפורקים לפי מתי הכי הגיוני להגיע אליהם — מה יש שם, כמה זה עולה בערך, וכמה נסיעה זה מהמלון.</p>
+  <p class="lede">כל המקומות ששוהם שלחה בקבוצה, פלוס שלוש טברנות מקומיות שחיפשנו בנפרד — מפורקים לפי מתי הכי הגיוני להגיע אליהם, עם מחירים ומרחקי נסיעה מהמלון.</p>
   <dl class="facts">
     <div class="fact"><dt>בסיס</dt><dd>Cook's Club Kolymbia</dd></div>
     <div class="fact"><dt>תאריכים</dt><dd>31.8 – 4.9 · 5 ימים</dd></div>
@@ -420,104 +428,134 @@ section[id]{scroll-margin-top:64px}
 <section id="map">
   <div class="sec-head">
     <h2>הכל על ציר אחד</h2>
-    <span class="when">המלון באמצע · צפונה לעיר, דרומה ללינדוס</span>
+    <span class="when">המלון באמצע · טבעות = זמן נסיעה</span>
   </div>
-  <p class="sec-note">קולימביה יושבת בדיוק באמצע: כל מה שנשלח בקבוצה נמצא על כביש החוף המזרחי, צפונית או דרומית למלון. לחיצה על שם פותחת אותו ב־Google Maps.</p>
+  <p class="sec-note">קולימביה יושבת בדיוק באמצע. שתי הטבעות המקווקוות מראות מה בטווח <strong>15 דקות</strong> ומה בטווח <strong>30 דקות</strong> נסיעה מהמלון — כך רואים מיד מה אפשר לעשות בערב רגיל ומה דורש יום. לחיצה על שם פותחת ב־Google Maps.</p>
 
   <div class="mapwrap">
-    <svg viewBox="0 0 790 780" role="img" aria-labelledby="maptitle" class="map">
-      <title id="maptitle">מפה סכמטית של רודוס עם המקומות מהקבוצה, מסודרים על כביש החוף המזרחי</title>
+    <svg viewBox="0 0 820 700" role="img" aria-labelledby="maptitle" class="map">
+      <title id="maptitle">מפה סכמטית של רודוס: המקומות מהקבוצה והטברנות המקומיות, עם טבעות זמן נסיעה מהמלון</title>
 
-      <!-- sea -->
-      <rect x="0" y="0" width="790" height="780" fill="var(--sea)"/>
+      <rect x="0" y="0" width="820" height="700" fill="var(--sea)"/>
 
       <!-- island -->
       <path fill="var(--land)" stroke="var(--coast)" stroke-width="1.5" d="
-        M490.9,42.2 L493.8,67.6 L491.0,152.0 L477.3,244.9 L404.4,371.6 L383.8,413.8
-        L342.5,456.0 L321.9,523.6 L308.1,624.9 L308.1,667.1 L273.8,726.2 L218.8,780
-        L163.8,780 L163.8,557.3 L191.3,388.5 L246.3,219.6 L301.3,135.1 L383.8,84.4
-        L452.5,50.7 Z"/>
+        M567.2,65.6 L569.5,86.9 L567.2,158.0 L555.7,236.2 L494.8,342.9 L483.3,378.4
+        L443.0,414.0 L425.7,470.9 L414.3,556.3 L414.3,591.8 L385.5,641.6 L339.5,670
+        L282.0,670 L213.0,570.4 L201.5,428.2 L247.5,286.0 L328.0,172.2 L420.0,115.3
+        L500.5,86.9 L535.0,72.7 Z"/>
 
-      <!-- east coast road -->
+      <!-- drive-time rings from hotel -->
+      <circle cx="484.4" cy="340.5" r="160" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="5 6" opacity=".55"/>
+      <circle cx="484.4" cy="340.5" r="320" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="5 6" opacity=".38"/>
+      <text x="484.4" y="496" class="ring-lbl">15 דק' נסיעה</text>
+      <text x="484.4" y="656" class="ring-lbl">30 דק' נסיעה</text>
+
+      <!-- coast road -->
       <path fill="none" stroke="var(--road)" stroke-width="2.5" stroke-dasharray="7 5" stroke-linecap="round" d="
-        M487,61 L490,84 L470,150 L455,233 L471,250 L440,300 L392,369 L360,430
-        L336,500 L318,570 L302,656"/>
-      <!-- branch to Ialysos -->
-      <path fill="none" stroke="var(--road)" stroke-width="2.5" stroke-dasharray="7 5" stroke-linecap="round" d="M487,61 L440,80 L396,120"/>
+        M563.7,81.2 L566.6,100.4 L560,160 L537.3,226.3 L550.6,242.5 L520,290
+        L484.4,340.5 L475.2,382.7 L443,414 L426,471 L405.3,582.3"/>
+      <path fill="none" stroke="var(--road)" stroke-width="2.5" stroke-dasharray="7 5" stroke-linecap="round" d="M563.7,81.2 L520,105 L487.8,131"/>
+      <path fill="none" stroke="var(--road)" stroke-width="2.5" stroke-dasharray="7 5" stroke-linecap="round" d="M443,414 L350,422 L243.4,418.4"/>
 
       <g class="mlabel">
 
         <!-- Elli beach clubs -->
-        <line x1="490" y1="51" x2="500" y2="46" stroke="var(--coast)" stroke-width="1"/>
-        <circle cx="489.6" cy="50.7" r="5.5" fill="var(--morning)" stroke="var(--surface)" stroke-width="1.5"/>
+        <line x1="566" y1="72.7" x2="584" y2="58" stroke="var(--coast)" stroke-width="1"/>
+        <path d="M566,65.7 L573,72.7 L566,79.7 L559,72.7 Z" fill="var(--morning)" stroke="var(--surface)" stroke-width="1.5"/>
         <a href="https://www.google.com/maps/search/?api=1&amp;query=Elli%20Beach%20Rhodes" target="_blank" rel="noopener">
-          <text x="506" y="43" class="n">Ronda · Elli · Nor · Meltemi</text>
-          <text x="506" y="57" class="t">ביץ' קלאבים · 35 דק'</text>
+          <text x="590" y="55" class="n">Ronda · Elli · Nor · Meltemi</text>
+          <text x="590" y="71" class="t">ביץ' קלאבים · 35 דק'</text>
         </a>
 
         <!-- Rhodes Old Town -->
-        <line x1="487" y1="61" x2="500" y2="76" stroke="var(--coast)" stroke-width="1"/>
-        <circle cx="486.9" cy="60.8" r="5.5" fill="var(--noon)" stroke="var(--surface)" stroke-width="1.5"/>
+        <line x1="563.7" y1="81.2" x2="584" y2="92" stroke="var(--coast)" stroke-width="1"/>
+        <circle cx="563.7" cy="81.2" r="6" fill="var(--noon)" stroke="var(--surface)" stroke-width="1.5"/>
         <a href="https://www.google.com/maps/search/?api=1&amp;query=Rhodes%20Old%20Town" target="_blank" rel="noopener">
-          <text x="506" y="79" class="n">Rhodes Old Town</text>
-          <text x="506" y="93" class="t">העיר העתיקה · 35 דק'</text>
+          <text x="590" y="95" class="n">Rhodes Old Town</text>
+          <text x="590" y="111" class="t">Il Borgo · Ouzokafenes · 35 דק'</text>
         </a>
 
         <!-- Nea Marina -->
-        <line x1="490" y1="84" x2="500" y2="112" stroke="var(--coast)" stroke-width="1"/>
-        <circle cx="490.3" cy="83.6" r="5.5" fill="var(--evening)" stroke="var(--surface)" stroke-width="1.5"/>
+        <line x1="566.6" y1="100.4" x2="584" y2="132" stroke="var(--coast)" stroke-width="1"/>
+        <circle cx="566.6" cy="100.4" r="6" fill="var(--evening)" stroke="var(--surface)" stroke-width="1.5"/>
         <a href="https://www.google.com/maps/search/?api=1&amp;query=Paragadi%20Rhodes" target="_blank" rel="noopener">
-          <text x="506" y="115" class="n">Paragadi · El Toro</text>
-          <text x="506" y="129" class="t">נאה מרינה · 35 דק'</text>
+          <text x="590" y="135" class="n">Paragadi · El Toro</text>
+          <text x="590" y="151" class="t">דגים ובשרים · 35 דק'</text>
         </a>
 
-        <!-- Ialysos -->
-        <circle cx="396.1" cy="119.9" r="5.5" fill="var(--evening)" stroke="var(--surface)" stroke-width="1.5"/>
+        <!-- Cavo Italiano -->
+        <circle cx="487.8" cy="131" r="6" fill="var(--evening)" stroke="var(--surface)" stroke-width="1.5"/>
         <a href="https://www.google.com/maps/search/?api=1&amp;query=Cavo%20Italiano%20Rhodes" target="_blank" rel="noopener">
-          <text x="384" y="117" class="n e">Cavo Italiano</text>
-          <text x="384" y="131" class="t e">יאליסוס · 45 דק'</text>
+          <text x="472" y="128" class="n e">Cavo Italiano</text>
+          <text x="472" y="144" class="t e">יאליסוס · 45 דק'</text>
         </a>
 
-        <!-- Faliraki / Tsittas -->
-        <line x1="455" y1="233" x2="500" y2="216" stroke="var(--coast)" stroke-width="1"/>
-        <circle cx="455.3" cy="233.1" r="5.5" fill="var(--evening)" stroke="var(--surface)" stroke-width="1.5"/>
+        <!-- Tsittas -->
+        <line x1="537.3" y1="226.3" x2="584" y2="214" stroke="var(--coast)" stroke-width="1"/>
+        <circle cx="537.3" cy="226.3" r="6" fill="var(--evening)" stroke="var(--surface)" stroke-width="1.5"/>
         <a href="https://www.google.com/maps/search/?api=1&amp;query=Tsittas%20Pizza%20Bar%20Rhodes" target="_blank" rel="noopener">
-          <text x="506" y="213" class="n">Tsittas Pizza Bar</text>
-          <text x="506" y="227" class="t">פליראקי · 15 דק'</text>
+          <text x="590" y="211" class="n">Tsittas Pizza Bar</text>
+          <text x="590" y="227" class="t">פליראקי · 15 דק'</text>
         </a>
 
-        <!-- Anthony Quinn / Ladiko / Kounna -->
-        <line x1="471" y1="250" x2="500" y2="264" stroke="var(--coast)" stroke-width="1"/>
-        <circle cx="471.2" cy="250" r="5.5" fill="var(--morning)" stroke="var(--surface)" stroke-width="1.5"/>
+        <!-- Anthony Quinn -->
+        <line x1="550.6" y1="242.5" x2="584" y2="258" stroke="var(--coast)" stroke-width="1"/>
+        <path d="M550.6,235.5 L557.6,242.5 L550.6,249.5 L543.6,242.5 Z" fill="var(--morning)" stroke="var(--surface)" stroke-width="1.5"/>
         <a href="https://www.google.com/maps/search/?api=1&amp;query=Anthony%20Quinn%20Bay%20Rhodes" target="_blank" rel="noopener">
-          <text x="506" y="261" class="n">Anthony Quinn · Ladiko · Kounna</text>
-          <text x="506" y="275" class="t">15 דק' · הכי קרוב למלון</text>
+          <text x="590" y="255" class="n">Anthony Quinn · Ladiko</text>
+          <text x="590" y="271" class="t">+ Kounna · 15 דק'</text>
         </a>
 
         <!-- HOTEL -->
-        <circle cx="392" cy="368.7" r="11" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
-        <circle cx="392" cy="368.7" r="4.5" fill="var(--accent)"/>
-        <text x="376" y="365" class="n e hl">Cook's Club Kolymbia</text>
-        <text x="376" y="379" class="t e">הבסיס שלכם</text>
+        <circle cx="484.4" cy="340.5" r="12" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+        <circle cx="484.4" cy="340.5" r="5" fill="var(--accent)"/>
+        <text x="466" y="336" class="n e hl">Cook's Club Kolymbia</text>
+        <text x="466" y="352" class="t e">הבסיס שלכם</text>
+
+        <!-- Tsambikos (local) -->
+        <line x1="499" y1="352" x2="584" y2="341" stroke="var(--coast)" stroke-width="1"/>
+        <circle cx="499" cy="352" r="9.5" fill="none" stroke="var(--evening)" stroke-width="2"/>
+        <circle cx="499" cy="352" r="5" fill="var(--evening)"/>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Taverna%20Tsambikos%20Kolymbia" target="_blank" rel="noopener">
+          <text x="590" y="338" class="n">Taverna Tsambikos</text>
+          <text x="590" y="354" class="t">טברנה מקומית · במרחק הליכה</text>
+        </a>
+
+        <!-- Maria Taverna (local) -->
+        <circle cx="475.2" cy="382.7" r="9.5" fill="none" stroke="var(--noon)" stroke-width="2"/>
+        <circle cx="475.2" cy="382.7" r="5" fill="var(--noon)"/>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Maria%20Taverna%20Tsampika%20Rhodes" target="_blank" rel="noopener">
+          <text x="458" y="380" class="n e">Maria Taverna</text>
+          <text x="458" y="396" class="t e">טברנה מקומית · 8 דק'</text>
+        </a>
+
+        <!-- Paraga (local) -->
+        <circle cx="243.4" cy="418.4" r="9.5" fill="none" stroke="var(--evening)" stroke-width="2"/>
+        <circle cx="243.4" cy="418.4" r="5" fill="var(--evening)"/>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Mageirotechneio%20Taverna%20Paraga%20Apollona" target="_blank" rel="noopener">
+          <text x="228" y="415" class="n e">Paraga · Apollona</text>
+          <text x="228" y="431" class="t e">טברנת הרים · 50 דק'</text>
+        </a>
 
         <!-- Lindos -->
-        <circle cx="297.4" cy="655.8" r="5.5" fill="var(--morning)" stroke="var(--surface)" stroke-width="1.5"/>
+        <path d="M405.3,575.3 L412.3,582.3 L405.3,589.3 L398.3,582.3 Z" fill="var(--morning)" stroke="var(--surface)" stroke-width="1.5"/>
         <a href="https://www.google.com/maps/search/?api=1&amp;query=Lindos%20Acropolis" target="_blank" rel="noopener">
-          <text x="283" y="641" class="n e">Lindos · Acropolis</text>
-          <text x="283" y="655" class="t e">עיירה לבנה · 30 דק'</text>
+          <text x="390" y="572" class="n e">Lindos · Acropolis</text>
+          <text x="390" y="588" class="t e">עיירה לבנה · 30 דק'</text>
         </a>
 
         <!-- St Paul's Bay -->
-        <circle cx="302.1" cy="676" r="5.5" fill="var(--noon)" stroke="var(--surface)" stroke-width="1.5"/>
+        <circle cx="409.2" cy="606" r="6" fill="var(--noon)" stroke="var(--surface)" stroke-width="1.5"/>
         <a href="https://www.google.com/maps/search/?api=1&amp;query=Tambakio%20Lindos" target="_blank" rel="noopener">
-          <text x="288" y="681" class="n e">St Paul's Bay · Tambakio</text>
-          <text x="288" y="695" class="t e">חוף וסירה · 30 דק'</text>
+          <text x="392" y="608" class="n e">St Paul's Bay · Tambakio</text>
+          <text x="392" y="624" class="t e">חוף וסירה · 30 דק'</text>
         </a>
 
       </g>
 
       <!-- compass -->
-      <g transform="translate(750,720)">
+      <g transform="translate(778,650)">
         <line x1="0" y1="26" x2="0" y2="-6" stroke="var(--coast)" stroke-width="1.5"/>
         <path d="M0,-14 L5,-2 L-5,-2 Z" fill="var(--coast)"/>
         <text x="0" y="-20" class="t" text-anchor="middle">N</text>
@@ -529,10 +567,13 @@ section[id]{scroll-margin-top:64px}
     <span><i style="background:var(--morning)"></i>בוקר</span>
     <span><i style="background:var(--noon)"></i>צהריים</span>
     <span><i style="background:var(--evening)"></i>ערב</span>
+    <span><i class="dia"></i>חוף ופעילות</span>
+    <span><i class="local"></i>טברנה מקומית</span>
     <span><i class="ring"></i>המלון</span>
-    <span><i class="dash"></i>כביש החוף המזרחי</span>
+    <span><i class="dash"></i>כביש</span>
+    <span><i class="dashring"></i>טבעת זמן נסיעה</span>
   </div>
-  <p class="sec-note" style="margin-top:14px">המפה סכמטית — קו החוף מקורב, אבל המיקומים והמרחקים היחסיים נכונים. שימו לב ש־Cavo Italiano ביאליסוס הוא היחיד שלא על הציר הזה: הוא בצד השני של האי.</p>
+  <p class="sec-note" style="margin-top:14px">המפה סכמטית — קו החוף מקורב, אבל המיקומים והמרחקים היחסיים נכונים, והטבעות מחושבות לפי מהירות נסיעה ממוצעת באי. שימו לב לשני חריגים: <strong>Cavo Italiano</strong> ביאליסוס ו־<strong>Paraga</strong> באפולונה יושבים על ענפים נפרדים, לא על כביש החוף.</p>
 </section>
 
 <!-- ============ בוקר ============ -->
@@ -607,7 +648,7 @@ section[id]{scroll-margin-top:64px}
 <section style="--band:var(--noon);--band-wash:var(--noon-wash)" id="noon">
   <div class="sec-head">
     <h2>צהריים</h2>
-    <span class="when">12:00 – 18:00 · אוכל על המים, סירה, ועיר עתיקה</span>
+    <span class="when">12:00 – 18:00 · אוכל על המים, טברנות וסירה</span>
   </div>
   <p class="sec-note">שתי מסעדות החוף עובדות גם בצהריים — ובצהריים הן בלי הזמנה ובלי לחץ. העיר העתיקה טובה דווקא אחה"צ, כשהיא כבר בצל.</p>
 
@@ -622,6 +663,18 @@ section[id]{scroll-margin-top:64px}
         <div><dt>מהמלון</dt><dd>~12 ק"מ · 15–18 דק'</dd></div>
       </dl>
       <p class="src">מקור: <a href="https://vt.tiktok.com/ZSVa4kAGP/">@ourtraveldiaries01</a> · <a href="https://vt.tiktok.com/ZS4NqBRe9/">@vic_whitehouse</a> · <a href="https://www.instagram.com/kounna_rhodes/">אינסטגרם</a></p>
+    </article>
+
+    <article class="card">
+      <h3>Maria Taverna<span class="lat">ליד חוף צמביקה, ארכנגלוס</span></h3>
+      <div class="tags"><span class="tag">טברנה מקומית</span><span class="tag">עלי גפן</span><span class="tag">נפתח 10:00</span></div>
+      <p>טברנה משפחתית אמיתית, לא תיירותית — ‎<strong>4.8 מתוך 2,385 ביקורות</strong>. מה שמצוין עליה במיוחד: <strong>עלי גפן ממולאים בעבודת יד</strong>, ומנות נדיבות. סובלאקי, סלטים, אוכל יווני ביתי.</p>
+      <p><strong>נפתחת כבר ב־10:00</strong> — הכי מוקדם מכל מה שברשימה. משתלב בול עם בוקר בחוף צמביקה, שממילא 5 דקות מכם.</p>
+      <dl class="meta">
+        <div><dt>מחיר</dt><dd>€15–20 לאדם</dd></div>
+        <div><dt>מהמלון</dt><dd>~5 ק"מ · ~8 דק'</dd></div>
+      </dl>
+      <p class="src">לא מהטיקטוקים — נמצא בחיפוש אחר טברנה מקומית</p>
     </article>
 
     <article class="card">
@@ -664,11 +717,36 @@ section[id]{scroll-margin-top:64px}
 <section style="--band:var(--evening);--band-wash:var(--evening-wash)" id="evening">
   <div class="sec-head">
     <h2>ערב</h2>
-    <span class="when">18:00 ואילך · תשע אופציות, מהקרוב לרחוק</span>
+    <span class="when">18:00 ואילך · 11 אופציות, מהקרוב לרחוק</span>
   </div>
   <p class="sec-note">רוב הקישורים בקבוצה הם בעצם המלצות ערב. שווה לדעת: בסרטון של nofaradmon היא מציינת שבכל הפעמים היה <strong>קריר בלילות ליד הים</strong> — קחו שכבה.</p>
 
   <div class="grid">
+
+    <article class="card">
+      <h3>Taverna Tsambikos<span class="lat">קולימביה · נפתח 12:30</span></h3>
+      <div class="tags"><span class="tag">טברנה מקומית</span><span class="tag">עלי גפן</span><span class="tag">במרחק הליכה</span></div>
+      <p><strong>4.8 מתוך 3,962 ביקורות</strong> — המדגם הגדול ביותר מכל מקום ברשימה הזו. אוכל יווני מסורתי: <strong>עלי גפן ממולאים</strong>, מוסקה, סובלאקי, סלט יווני, פריטו מיסטו, וצלעות כבש על הגריל.</p>
+      <p>מה שחוזר שוב ושוב בביקורות: <strong>קינוח חינם, גלידה, ומסטיקה בסוף הארוחה</strong> — 57 אנשים ציינו את זה במפורש. הכנסת אורחים יוונית קלאסית, בעלים שמסתובב בין השולחנות.</p>
+      <p><strong>וזה בכפר שלכם, במרחק הליכה מהמלון.</strong> בלי רכב, בלי חניה, ואפשר לשתות יין.</p>
+      <dl class="meta">
+        <div><dt>מחיר</dt><dd>€15–25 לאדם</dd></div>
+        <div><dt>מהמלון</dt><dd>הליכה · ‎+30 2241 056095</dd></div>
+      </dl>
+      <p class="src">לא מהטיקטוקים — נמצא בחיפוש אחר טברנה מקומית</p>
+    </article>
+
+    <article class="card">
+      <h3>Paraga · Παράγκα<span class="lat">כפר ההרים אפולונה</span></h3>
+      <div class="tags"><span class="tag">טברנה מקומית</span><span class="tag">עלי גפן</span><span class="tag">סגור בשלישי</span></div>
+      <p><strong>4.9 מתוך 2,675 ביקורות — הדירוג הגבוה ביותר באי מכל מה שבדקנו.</strong> "מאגירוטכניון": בית בישול מסורתי בכניסה לכפר, בבניין ששימש פעם מועדון קצינים איטלקי.</p>
+      <p>המרכיבים מהחקלאות שמסביב, <strong>לחם רודי נאפה בטאבון עצים כל בוקר</strong>, עלי גפן, וכבש בבישול איטי. זו לא ארוחה — זו נסיעה פנימה לאי, דרך כפרי ההרים.</p>
+      <dl class="meta">
+        <div><dt>מחיר</dt><dd>€15–35 לאדם</dd></div>
+        <div><dt>מהמלון</dt><dd>~35 ק"מ · ~50 דק'</dd></div>
+      </dl>
+      <p class="src">‎+30 2246 091247 · <a href="https://paraga-apollona.gr">paraga-apollona.gr</a> · סגור בימי שלישי</p>
+    </article>
 
     <article class="card">
       <h3>Tsittas Pizza Bar<span class="lat">פליראקי · 18:00–01:00</span></h3>
@@ -836,7 +914,7 @@ section[id]{scroll-margin-top:64px}
 <section id="index">
   <div class="sec-head">
     <h2>כל המקומות שנאספו</h2>
-    <span class="when">מהקרוב למלון ועד הרחוק · 25 פריטים</span>
+    <span class="when">מהקרוב למלון ועד הרחוק · 28 פריטים</span>
   </div>
   <p class="sec-note">כל שם שהופיע בקישורים של הקבוצה, כולל מה שלא נכנס לתוכנית. מסודר לפי מרחק נסיעה מקולימביה — כך רואים מיד מה אפשר לצרף לאותו יום.</p>
   <div class="scroller">
@@ -845,6 +923,8 @@ section[id]{scroll-margin-top:64px}
         <tr><th>מקום</th><th>מה זה</th><th>אזור</th><th>מהמלון</th><th>מתי</th><th>מקור</th></tr>
       </thead>
       <tbody>
+        <tr><td class="day">Taverna Tsambikos</td><td><strong>טברנה מקומית</strong> · עלי גפן, מוסקה, כבש · 4.8★ (3,962)</td><td>קולימביה</td><td><strong>הליכה</strong></td><td>צהריים / ערב</td><td>חיפוש מקומי</td></tr>
+        <tr><td class="day">Maria Taverna</td><td><strong>טברנה מקומית</strong> · עלי גפן בעבודת יד · 4.8★ (2,385)</td><td>ליד חוף צמביקה</td><td>~5 ק"מ · 8 דק'</td><td>צהריים</td><td>חיפוש מקומי</td></tr>
         <tr><td class="day">Kounna Beach &amp; Resto Bar</td><td>מסעדת חוף מעל המים, ים־תיכוני</td><td>מפרץ אנתוני קווין, פליראקי</td><td>~12 ק"מ · 15 דק'</td><td>צהריים / ערב</td><td><a href="https://vt.tiktok.com/ZSVa4kAGP/">×3 מקורות</a></td></tr>
         <tr><td class="day">מפרץ אנתוני קווין</td><td>מפרץ סלעי, שנרקול, מים טורקיז</td><td>ליד לאדיקו, פליראקי</td><td>~12 ק"מ · 15 דק'</td><td>בוקר</td><td><a href="https://vt.tiktok.com/ZS4dsCEhD/">@nofaradmon0</a></td></tr>
         <tr><td class="day">מפרץ לאדיקו</td><td>מפרץ קטן, 2 דק' הלאה בכביש</td><td>לאדיקו, פליראקי</td><td>~13 ק"מ · 17 דק'</td><td>בוקר</td><td><a href="https://vt.tiktok.com/ZS4dsCEhD/">@nofaradmon0</a></td></tr>
@@ -868,6 +948,7 @@ section[id]{scroll-margin-top:64px}
         <tr><td class="day">Nor</td><td>ביץ' קלאב — באמצע הטווח</td><td>טיילת רודוס טאון</td><td>~27 ק"מ · 35 דק'</td><td>בוקר</td><td><a href="https://vt.tiktok.com/ZS4dsCEhD/">@nofaradmon0</a></td></tr>
         <tr><td class="day">Meltemi</td><td>ביץ' קלאב — <strong>הכי זול למיטה</strong></td><td>טיילת רודוס טאון</td><td>~27 ק"מ · 35 דק'</td><td>בוקר</td><td><a href="https://vt.tiktok.com/ZS4dsCEhD/">@nofaradmon0</a></td></tr>
         <tr><td class="day">Cavo Italiano / Cavo Tango</td><td>איטלקי + בר סושי מתחת · "ואו ברמות"</td><td>יאליסוס</td><td>~35 ק"מ · 45 דק'</td><td>ערב</td><td><a href="https://vt.tiktok.com/ZS4dsCEhD/">@nofaradmon0</a></td></tr>
+        <tr><td class="day">Paraga · Παράγκα</td><td><strong>טברנה מקומית</strong> · לחם בטאבון, עלי גפן, כבש · <strong>4.9★ (2,675)</strong> · סגור בשלישי</td><td>אפולונה, כפר הרים</td><td>~35 ק"מ · 50 דק'</td><td>ערב</td><td>חיפוש מקומי</td></tr>
         <tr><td class="day">סנטה מריה</td><td>הערת טקסט בקבוצה: "חמישי צהריים" · בלי סרטון</td><td>לא צוין</td><td>—</td><td>צהריים</td><td>הודעה בקבוצה</td></tr>
         <tr><td class="day">Elissa Lifestyle Resort · Amus Hotel · Marathon Rhodes</td><td>מלונות והשכרת רכב — לא רלוונטי לכם</td><td>—</td><td>—</td><td>רקע</td><td><a href="https://vt.tiktok.com/ZS4dsCEhD/">@nofaradmon0</a></td></tr>
       </tbody>
